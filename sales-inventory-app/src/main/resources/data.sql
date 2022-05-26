@@ -1,0 +1,1 @@
+-- insert into public.product(id, created_at, updated_at, disabled, product_name, product_price, product_quantity ) values(1, TO_TIMESTAMP('2014-07-02 06:14:00.742000000', 'YYYY-MM-DD HH24:MI:SS.FF'),TO_TIMESTAMP('2014-07-02 06:14:00.742000000', 'YYYY-MM-DD HH24:MI:SS.FF'), false, 'any_name', 200.00, 2  )
