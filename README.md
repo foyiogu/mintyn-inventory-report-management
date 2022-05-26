@@ -1,0 +1,1 @@
+# mintyn-inventory-report-management
