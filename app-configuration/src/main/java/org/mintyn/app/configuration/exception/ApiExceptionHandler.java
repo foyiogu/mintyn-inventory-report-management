@@ -1,4 +1,4 @@
-package org.mintyn.inventory.exception;
+package org.mintyn.app.configuration.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,7 +33,6 @@ public class ApiExceptionHandler {
 
         ApiException apiException = new ApiException(e.getMessage(),
                 false, notFound, LocalDateTime.now(ZoneId.of("Z")));
-        
 
         return new ResponseEntity<>(apiException, notFound);
     }
@@ -41,12 +40,12 @@ public class ApiExceptionHandler {
     @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ExceptionHandler(value = {ApiRequestUnauthorizedException.class})
     public ResponseEntity<Object> handleApiRequestUnauthorizedException(ApiResourceNotFoundException e) {
-        HttpStatus notFound = HttpStatus.UNAUTHORIZED;
+        HttpStatus unauthorized = HttpStatus.UNAUTHORIZED;
 
         ApiException apiException = new ApiException(e.getMessage(),
-                false, notFound, LocalDateTime.now(ZoneId.of("Z")));
+                false, unauthorized, LocalDateTime.now(ZoneId.of("Z")));
 
-        return new ResponseEntity<>(apiException, notFound);
+        return new ResponseEntity<>(apiException, unauthorized);
     }
 
 

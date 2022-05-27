@@ -11,8 +11,9 @@
     <name>mintyn-inventory</name>
     <description>inventory app for mintyn</description>
     <modules>
-        <module>app-configuration-data</module>
+        <module>app-configuration</module>
         <module>sales-inventory-app</module>
+        <module>order-report-app</module>
     </modules>
 
     <properties>
@@ -65,7 +66,7 @@
             <!-- INTERNAL DEPENDENCIES START -->
             <dependency>
                 <groupId>org.mintyn</groupId>
-                <artifactId>app-configuration-data</artifactId>
+                <artifactId>app-configuration</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- INTERNAL DEPENDENCIES END-->

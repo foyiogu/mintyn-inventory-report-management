@@ -1,4 +1,4 @@
-package org.mintyn.inventory.exception;
+package org.mintyn.app.configuration.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

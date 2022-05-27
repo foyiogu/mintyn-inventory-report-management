@@ -1,6 +1,5 @@
 package org.mintyn.inventory.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.mintyn.inventory.model.audit.DateAudit;
 
@@ -14,12 +13,12 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Table(name = "product_order")
-public class Order extends DateAudit {
+public class ProductOrder extends DateAudit {
 
     @Column(name = "customer_name")
     private String customerName;
 
-    @Column(name = "customer_phone_number", unique = true)
+    @Column(name = "customer_phone_number")
     private String customerPhoneNumber;
 
     @Column(name = "product_order_name")

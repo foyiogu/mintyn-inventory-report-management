@@ -25,6 +25,9 @@ public class Product extends DateAudit {
     @Column(name = "product_price",nullable = false)
     private BigDecimal price;
 
+    @Column(name = "product_description", columnDefinition = "TEXT")
+    private String description;
+
     @Column(nullable = false)
     private Boolean disabled = true;
 
