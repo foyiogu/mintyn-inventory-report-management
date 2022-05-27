@@ -32,16 +32,15 @@ public class ExcelFileGenerator {
 
             int rowIndex = 1;
 
-            for (int j = 0; j < noOfReports; j++) {
+            for (OrderReport orderReport : reports) {
 
-            OrderReport orderReport = reports.get(j);
                 int cellIndex = 0;
 
                 row = sheet.createRow(rowIndex++);
 
                 //  Date Created
                 Cell cell = row.createCell(cellIndex++);
-                cell.setCellValue(orderReport.getOrderCreatedDate());
+                cell.setCellValue(orderReport.getOrderCreatedDate().toString());
 
                 //  Customer Name
                 cell = row.createCell(cellIndex++);
@@ -63,8 +62,7 @@ public class ExcelFileGenerator {
                 cell = row.createCell(cellIndex++);
                 cell.setCellValue(orderReport.getOrderQuantity());
 
-                // Total Price todo: change to c++
-                cell = row.createCell(++cellIndex);
+                cell = row.createCell(cellIndex++);
                 cell.setCellValue(String.valueOf(orderReport.getTotalProductPrice()));
 
             }

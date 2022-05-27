@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -27,25 +27,12 @@ public abstract class DateAudit {
     @Column(name = "created_at")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    @CreationTimestamp
-    private LocalDateTime createdAt;
+    @CreatedDate
+    private LocalDate createdAt;
 
     @Column(name = "updated_at")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-//
-//
-//    @Column(name = "created_at")
-//    @DateTimeFormat(pattern = "dd-MM-yyyy")
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-//    @CreationTimestamp
-//    private LocalDate createdAt;
-//
-//    @Column(name = "last_modify_date")
-//    @DateTimeFormat(pattern = "dd-MM-yyyy")
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-//    @UpdateTimestamp
-//    private LocalDate updatedAt;
+    @LastModifiedDate
+    private LocalDate updatedAt;
 }

@@ -21,8 +21,5 @@ public class OrderReportMapper {
         return modelMapper.map(orderReport, CreatedOrder.class);
     }
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 }

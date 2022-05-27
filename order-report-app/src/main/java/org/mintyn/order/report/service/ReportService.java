@@ -5,9 +5,11 @@ import org.mintyn.order.report.payload.CreatedOrder;
 import org.mintyn.order.report.payload.ReportRangeRequest;
 import org.mintyn.order.report.payload.ReportResponse;
 
+import java.time.LocalDate;
+
 public interface ReportService {
 
     CreatedOrder addOrderReport(CreatedOrder order);
 
-    ReportResponse getReportFromDateRange(ReportRangeRequest rangeRequest);
+    ReportResponse getReportFromDateRange(LocalDate startDate, LocalDate endDate);
 }

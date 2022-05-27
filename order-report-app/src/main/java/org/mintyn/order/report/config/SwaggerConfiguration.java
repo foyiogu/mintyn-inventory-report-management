@@ -17,7 +17,7 @@ import java.util.Collections;
 @Configuration
 @EnableSwagger2
 class SwaggerConfiguration implements WebMvcConfigurer {
-// WEBSITE IS - http://localhost:8080/swagger-ui/
+// WEBSITE IS - http://localhost:8081/swagger-ui/
 
     @Bean
     public Docket swaggerConfig() {

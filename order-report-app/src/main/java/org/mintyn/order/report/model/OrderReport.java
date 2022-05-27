@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @ToString
@@ -17,16 +17,13 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "order_report")
 public class OrderReport {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private Long id;
 
     @Column(name = "order_created_date")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDateTime orderCreatedDate;
+    private LocalDate orderCreatedDate;
 
     private String customerName;
 

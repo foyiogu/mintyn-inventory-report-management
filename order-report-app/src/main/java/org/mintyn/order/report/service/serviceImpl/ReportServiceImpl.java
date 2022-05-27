@@ -14,8 +14,10 @@ import org.mintyn.order.report.utility.ExcelFileGenerator;
 import org.mintyn.order.report.utility.OrderReportMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,12 +44,12 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public ReportResponse getReportFromDateRange(ReportRangeRequest rangeRequest){
+    public ReportResponse getReportFromDateRange(LocalDate startDate, LocalDate endDate){
         try {
             List<OrderReport> rangedOrderReport = orderReportRepository
-                    .findAllByOrderCreatedDateIsBetween(rangeRequest.getStart(), rangeRequest.getEnd());
+                    .findAllByOrderCreatedDateIsBetween(startDate, endDate);
 
-            excelFileGenerator.generateTerminalRequestData(rangedOrderReport, rangeRequest.getStart() + " to " + rangeRequest.getEnd());
+            excelFileGenerator.generateTerminalRequestData(rangedOrderReport, startDate + " to " + endDate);
             return new ReportResponse("Excel File Generated", HttpStatus.OK);
         }catch (Exception ex){
             throw new ApiResourceNotFoundException("Could not find orders within this date range");
