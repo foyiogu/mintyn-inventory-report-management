@@ -66,16 +66,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderResponse> getAllOrders() {
-        try{
             List<OrderResponse> orderResponses = new ArrayList<>();
             List<ProductOrder> orders = orderRepository.findAll();
+
+        if (orders.isEmpty()){
+            throw new ApiResourceNotFoundException("Could not retrieve orders");
+        }
             for (ProductOrder order : orders) {
                 orderResponses.add(orderMapper.mapToOrderResponse(order));
             }
             return orderResponses;
-        }catch (Exception ex){
-            throw new ApiResourceNotFoundException("Could not retrieve orders");
-        }
+
     }
 
     @Override

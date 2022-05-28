@@ -75,16 +75,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> getAllProducts() {
-        try{
-            List<ProductResponse> productResponses = new ArrayList<>();
-            List<Product> products = productRepository.findAll();
-            for (Product product : products) {
-                productResponses.add(productMapper.mapToProductResponse(product));
-            }
-            return productResponses;
-        }catch (Exception ex){
+
+        List<ProductResponse> productResponses = new ArrayList<>();
+        List<Product> products = productRepository.findAll();
+        if (products.isEmpty()){
             throw new ApiResourceNotFoundException("Could not retrieve products");
         }
+        for (Product product : products) {
+            productResponses.add(productMapper.mapToProductResponse(product));
+        }
+        return productResponses;
 
     }
 
