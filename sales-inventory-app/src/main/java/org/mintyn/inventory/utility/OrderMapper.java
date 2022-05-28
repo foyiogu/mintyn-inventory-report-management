@@ -1,9 +1,9 @@
 package org.mintyn.inventory.utility;
 
+import org.mintyn.app.configuration.config.OrderResponse;
 import org.mintyn.inventory.model.ProductOrder;
 import org.mintyn.inventory.model.Product;
 import org.mintyn.inventory.payload.request.NewOrderRequest;
-import org.mintyn.inventory.payload.response.OrderResponse;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -30,7 +30,7 @@ public class OrderMapper {
         response.setCustomerName(order.getCustomerName());
         response.setCustomerPhoneNumber(order.getCustomerPhoneNumber());
         response.setProductName(order.getProductName());
-        response.setCreatedAt(order.getCreatedAt());
+        response.setOrderCreatedDate(order.getCreatedAt());
         response.setOrderQuantity(order.getOrderQuantity());
         response.setProductPrice(order.getProductPrice());
         response.setTotalProductPrice(order.getTotalProductPrice());

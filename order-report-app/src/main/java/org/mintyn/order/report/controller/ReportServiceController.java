@@ -3,15 +3,12 @@ package org.mintyn.order.report.controller;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.mintyn.order.report.payload.CreatedOrder;
-import org.mintyn.order.report.payload.ReportRangeRequest;
 import org.mintyn.order.report.service.ReportService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.time.LocalDate;
 
 @RestController
@@ -25,10 +22,6 @@ public class ReportServiceController {
 
     private final ReportService reportService;
 
-    @PostMapping("/add-report")
-    public ResponseEntity<?> createProduct(@Valid @RequestBody CreatedOrder createdOrder){
-        return new ResponseEntity<>(reportService.addOrderReport(createdOrder), HttpStatus.CREATED);
-    }
 
     @GetMapping("/generate-report/{begin}/{end}")
     public ResponseEntity<?> generateReport(@DateTimeFormat(pattern = "dd-MM-yyyy")

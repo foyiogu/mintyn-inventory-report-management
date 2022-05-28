@@ -1,24 +1,25 @@
 package org.mintyn.order.report.utility;
 
 import lombok.AllArgsConstructor;
+import org.mintyn.app.configuration.config.OrderResponse;
 import org.mintyn.order.report.model.OrderReport;
-import org.mintyn.order.report.payload.CreatedOrder;
-import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
 public class OrderReportMapper {
 
-    private final ModelMapper modelMapper;
+    public OrderReport mapToOrderReport(OrderResponse orderResponse){
+        OrderReport orderReport = new OrderReport();
+        orderReport.setCustomerName(orderResponse.getCustomerName());
+        orderReport.setCustomerPhoneNumber(orderResponse.getCustomerPhoneNumber());
+        orderReport.setOrderCreatedDate(orderResponse.getOrderCreatedDate());
+        orderReport.setProductName(orderResponse.getProductName());
+        orderReport.setProductPrice(orderResponse.getProductPrice());
+        orderReport.setOrderQuantity(orderResponse.getOrderQuantity());
+        orderReport.setTotalProductPrice(orderResponse.getTotalProductPrice());
 
-    public OrderReport mapToOrderReport(CreatedOrder createdOrder){
-        return modelMapper.map(createdOrder, OrderReport.class);
-    }
-
-    public CreatedOrder mapToCreatedOrder(OrderReport orderReport){
-        return modelMapper.map(orderReport, CreatedOrder.class);
+        return orderReport;
     }
 
 

@@ -3,13 +3,14 @@ package org.mintyn.inventory.service.serviceImpl;
 import lombok.RequiredArgsConstructor;
 import org.mintyn.app.configuration.exception.ApiRequestUnauthorizedException;
 import org.mintyn.app.configuration.exception.ApiResourceNotFoundException;
+import org.mintyn.app.configuration.config.OrderResponse;
 import org.mintyn.inventory.model.ProductOrder;
 import org.mintyn.inventory.model.Product;
 import org.mintyn.inventory.payload.request.NewOrderRequest;
-import org.mintyn.inventory.payload.response.OrderResponse;
 import org.mintyn.inventory.repository.OrderRepository;
 import org.mintyn.inventory.repository.ProductRepository;
 import org.mintyn.inventory.service.OrderService;
+import org.mintyn.inventory.kafka.report.ReportSenderService;
 import org.mintyn.inventory.utility.OrderMapper;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class OrderServiceImpl implements OrderService {
     private final ProductRepository productRepository;
 
     private final OrderMapper orderMapper;
+    private final ReportSenderService reportSenderService;
 
 
     @Override
@@ -55,6 +57,8 @@ public class OrderServiceImpl implements OrderService {
 
             OrderResponse orderResponse = orderMapper.mapToOrderResponse(order);
             orderResponses.add(orderResponse);
+
+            reportSenderService.sendOrderReport(orderResponse);
         }
 
         return orderResponses;

@@ -11,7 +11,6 @@ import java.util.List;
 @Component
 public class ExcelFileGenerator {
 
-
     public void generateTerminalRequestData(List<OrderReport> reports, String range){
 
         try {
@@ -27,8 +26,6 @@ public class ExcelFileGenerator {
                 cell.setCellValue(headers[i]);
                 cell.setCellStyle(headerStyle);
             }
-
-            long noOfReports = reports.size();
 
             int rowIndex = 1;
 
