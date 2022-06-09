@@ -87,5 +87,3 @@ mvn -Dtest=OrderServiceImplTest test
 ```
 mvn -Dtest=ProductServiceImplTest test
 ```
-
--
